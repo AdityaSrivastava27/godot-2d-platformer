@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3]
+[ext_resource type="Script" path="res://player.gd" id="1_player"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(32, 48)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_player")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Outline" type="Polygon2D" parent="Visual"]
+color = Color(0.14, 0.15, 0.2, 1)
+polygon = PackedVector2Array(-17, -13, -16.4127, -16.7082, -14.7082, -20.0534, -12.0534, -22.7082, -8.7082, -24.4127, -5, -25, 5, -25, 8.7082, -24.4127, 12.0534, -22.7082, 14.7082, -20.0534, 16.4127, -16.7082, 17, -13, 17, 13, 16.4127, 16.7082, 14.7082, 20.0534, 12.0534, 22.7082, 8.7082, 24.4127, 5, 25, -5, 25, -8.7082, 24.4127, -12.0534, 22.7082, -14.7082, 20.0534, -16.4127, 16.7082, -17, 13)
+
+[node name="Body" type="Polygon2D" parent="Visual"]
+color = Color(0.96, 0.52, 0.19, 1)
+polygon = PackedVector2Array(-15, -12, -14.4616, -15.3992, -12.8992, -18.4656, -10.4656, -20.8992, -7.39919, -22.4616, -4, -23, 4, -23, 7.39919, -22.4616, 10.4656, -20.8992, 12.8992, -18.4656, 14.4616, -15.3992, 15, -12, 15, 12, 14.4616, 15.3992, 12.8992, 18.4656, 10.4656, 20.8992, 7.39919, 22.4616, 4, 23, -4, 23, -7.39919, 22.4616, -10.4656, 20.8992, -12.8992, 18.4656, -14.4616, 15.3992, -15, 12)
+
+[node name="Belly" type="Polygon2D" parent="Visual"]
+color = Color(1, 0.8, 0.52, 1)
+polygon = PackedVector2Array(9, 6, 8.45723, 10.1042, 6.8944, 13.7135, 4.5, 16.3923, 1.56283, 17.8177, -1.56283, 17.8177, -4.5, 16.3923, -6.8944, 13.7135, -8.45723, 10.1042, -9, 6, -8.45723, 1.89576, -6.8944, -1.71345, -4.5, -4.3923, -1.56283, -5.81769, 1.56283, -5.81769, 4.5, -4.3923, 6.8944, -1.71345, 8.45723, 1.89576)
+
+[node name="EyeWhiteL" type="Polygon2D" parent="Visual"]
+color = Color(1, 1, 1, 1)
+polygon = PackedVector2Array(-1, -9, -1.49516, -6.83058, -2.88255, -5.09084, -4.8874, -4.12536, -7.1126, -4.12536, -9.11745, -5.09084, -10.5048, -6.83058, -11, -9, -10.5048, -11.1694, -9.11745, -12.9092, -7.1126, -13.8746, -4.8874, -13.8746, -2.88255, -12.9092, -1.49516, -11.1694)
+
+[node name="EyeWhiteR" type="Polygon2D" parent="Visual"]
+color = Color(1, 1, 1, 1)
+polygon = PackedVector2Array(11, -9, 10.5048, -6.83058, 9.11745, -5.09084, 7.1126, -4.12536, 4.8874, -4.12536, 2.88255, -5.09084, 1.49516, -6.83058, 1, -9, 1.49516, -11.1694, 2.88255, -12.9092, 4.8874, -13.8746, 7.1126, -13.8746, 9.11745, -12.9092, 10.5048, -11.1694)
+
+[node name="PupilL" type="Polygon2D" parent="Visual"]
+color = Color(0.14, 0.15, 0.2, 1)
+polygon = PackedVector2Array(-2.1, -9, -2.42154, -7.8, -3.3, -6.92154, -4.5, -6.6, -5.7, -6.92154, -6.57846, -7.8, -6.9, -9, -6.57846, -10.2, -5.7, -11.0785, -4.5, -11.4, -3.3, -11.0785, -2.42154, -10.2)
+
+[node name="PupilR" type="Polygon2D" parent="Visual"]
+color = Color(0.14, 0.15, 0.2, 1)
+polygon = PackedVector2Array(9.9, -9, 9.57846, -7.8, 8.7, -6.92154, 7.5, -6.6, 6.3, -6.92154, 5.42154, -7.8, 5.1, -9, 5.42154, -10.2, 6.3, -11.0785, 7.5, -11.4, 8.7, -11.0785, 9.57846, -10.2)
+
+[node name="BrowL" type="Polygon2D" parent="Visual"]
+color = Color(0.72, 0.34, 0.09, 1)
+polygon = PackedVector2Array(-11, -17, -2, -19, -2, -16, -11, -14)
+
+[node name="BrowR" type="Polygon2D" parent="Visual"]
+color = Color(0.72, 0.34, 0.09, 1)
+polygon = PackedVector2Array(11, -17, 2, -19, 2, -16, 11, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+limit_left = -160
+limit_top = 0
+limit_right = 2160
+limit_bottom = 720

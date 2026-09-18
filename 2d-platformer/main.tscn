@@ -1,0 +1,852 @@
+[gd_scene load_steps=21 format=3]
+[ext_resource type="Script" path="res://main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="2_player"]
+
+[sub_resource type="RectangleShape2D" id="shape_0"]
+size = Vector2(2320, 60)
+
+[sub_resource type="RectangleShape2D" id="shape_1"]
+size = Vector2(100, 540)
+
+[sub_resource type="RectangleShape2D" id="shape_2"]
+size = Vector2(100, 540)
+
+[sub_resource type="RectangleShape2D" id="shape_3"]
+size = Vector2(2320, 60)
+
+[sub_resource type="RectangleShape2D" id="shape_4"]
+size = Vector2(420, 160)
+
+[sub_resource type="RectangleShape2D" id="shape_5"]
+size = Vector2(420, 160)
+
+[sub_resource type="RectangleShape2D" id="shape_6"]
+size = Vector2(140, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_7"]
+size = Vector2(160, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_8"]
+size = Vector2(160, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_9"]
+size = Vector2(160, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_10"]
+size = Vector2(130, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_11"]
+size = Vector2(140, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_12"]
+size = Vector2(130, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_13"]
+size = Vector2(140, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_14"]
+size = Vector2(120, 40)
+
+[sub_resource type="RectangleShape2D" id="shape_15"]
+size = Vector2(48, 96)
+
+[sub_resource type="StyleBoxFlat" id="ui_hint_box"]
+bg_color = Color(0.12, 0.13, 0.18, 0.6)
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="ui_win_box"]
+bg_color = Color(0.18, 0.42, 0.24, 0.92)
+content_margin_left = 28.0
+content_margin_top = 18.0
+content_margin_right = 28.0
+content_margin_bottom = 18.0
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.96, 0.7, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Sky" type="CanvasLayer" parent="."]
+layer = -20
+
+[node name="SkyGradient" type="Polygon2D" parent="Sky"]
+color = Color(0.35, 0.62, 0.93, 1)
+polygon = PackedVector2Array(-400, -300, 1600, -300, 1600, 1000, -400, 1000)
+vertex_colors = PackedColorArray(0.35, 0.62, 0.93, 1, 0.35, 0.62, 0.93, 1, 0.72, 0.88, 0.98, 1, 0.72, 0.88, 0.98, 1)
+
+[node name="Parallax" type="ParallaxBackground" parent="."]
+layer = -10
+
+[node name="Far" type="ParallaxLayer" parent="Parallax"]
+motion_scale = Vector2(0.3, 0.35)
+
+[node name="Sun" type="Polygon2D" parent="Parallax/Far"]
+position = Vector2(300, 150)
+color = Color(1, 0.95, 0.7, 0.95)
+polygon = PackedVector2Array(60, 0, 57.9555, 15.5291, 51.9615, 30, 42.4264, 42.4264, 30, 51.9615, 15.5291, 57.9555, 3.67394e-15, 60, -15.5291, 57.9555, -30, 51.9615, -42.4264, 42.4264, -51.9615, 30, -57.9555, 15.5291, -60, 7.34788e-15, -57.9555, -15.5291, -51.9615, -30, -42.4264, -42.4264, -30, -51.9615, -15.5291, -57.9555, -1.10218e-14, -60, 15.5291, -57.9555, 30, -51.9615, 42.4264, -42.4264, 51.9615, -30, 57.9555, -15.5291)
+
+[node name="SunHalo" type="Polygon2D" parent="Parallax/Far"]
+position = Vector2(300, 150)
+color = Color(1, 0.97, 0.8, 0.3)
+polygon = PackedVector2Array(92, 0, 88.8652, 23.8114, 79.6743, 46, 65.0538, 65.0538, 46, 79.6743, 23.8114, 88.8652, 5.63338e-15, 92, -23.8114, 88.8652, -46, 79.6743, -65.0538, 65.0538, -79.6743, 46, -88.8652, 23.8114, -92, 1.12668e-14, -88.8652, -23.8114, -79.6743, -46, -65.0538, -65.0538, -46, -79.6743, -23.8114, -88.8652, -1.69001e-14, -92, 23.8114, -88.8652, 46, -79.6743, 65.0538, -65.0538, 79.6743, -46, 88.8652, -23.8114)
+
+[node name="FarHill0" type="Polygon2D" parent="Parallax/Far"]
+position = Vector2(150, 640)
+color = Color(0.62, 0.8, 0.64, 1)
+polygon = PackedVector2Array(-300, 0, -300, 0, -294.236, -29.2635, -277.164, -57.4025, -249.441, -83.3355, -212.132, -106.066, -166.671, -124.72, -114.805, -138.582, -58.5271, -147.118, -1.83697e-14, -150, 58.5271, -147.118, 114.805, -138.582, 166.671, -124.72, 212.132, -106.066, 249.441, -83.3355, 277.164, -57.4025, 294.236, -29.2635, 300, -1.83697e-14, 300, 0)
+
+[node name="FarHill1" type="Polygon2D" parent="Parallax/Far"]
+position = Vector2(650, 640)
+color = Color(0.62, 0.8, 0.64, 1)
+polygon = PackedVector2Array(-340, 0, -340, 0, -333.467, -37.0672, -314.119, -72.7099, -282.7, -105.558, -240.416, -134.35, -188.894, -157.979, -130.112, -175.537, -66.3307, -186.349, -2.0819e-14, -190, 66.3307, -186.349, 130.112, -175.537, 188.894, -157.979, 240.416, -134.35, 282.7, -105.558, 314.119, -72.7099, 333.467, -37.0672, 340, -2.32683e-14, 340, 0)
+
+[node name="FarHill2" type="Polygon2D" parent="Parallax/Far"]
+position = Vector2(1150, 640)
+color = Color(0.62, 0.8, 0.64, 1)
+polygon = PackedVector2Array(-380, 0, -380, 0, -372.698, -29.2635, -351.074, -57.4025, -315.958, -83.3355, -268.701, -106.066, -211.117, -124.72, -145.42, -138.582, -74.1343, -147.118, -2.32683e-14, -150, 74.1343, -147.118, 145.42, -138.582, 211.117, -124.72, 268.701, -106.066, 315.958, -83.3355, 351.074, -57.4025, 372.698, -29.2635, 380, -1.83697e-14, 380, 0)
+
+[node name="FarHill3" type="Polygon2D" parent="Parallax/Far"]
+position = Vector2(1650, 640)
+color = Color(0.62, 0.8, 0.64, 1)
+polygon = PackedVector2Array(-300, 0, -300, 0, -294.236, -37.0672, -277.164, -72.7099, -249.441, -105.558, -212.132, -134.35, -166.671, -157.979, -114.805, -175.537, -58.5271, -186.349, -1.83697e-14, -190, 58.5271, -186.349, 114.805, -175.537, 166.671, -157.979, 212.132, -134.35, 249.441, -105.558, 277.164, -72.7099, 294.236, -37.0672, 300, -2.32683e-14, 300, 0)
+
+[node name="FarHill4" type="Polygon2D" parent="Parallax/Far"]
+position = Vector2(2150, 640)
+color = Color(0.62, 0.8, 0.64, 1)
+polygon = PackedVector2Array(-340, 0, -340, 0, -333.467, -29.2635, -314.119, -57.4025, -282.7, -83.3355, -240.416, -106.066, -188.894, -124.72, -130.112, -138.582, -66.3307, -147.118, -2.0819e-14, -150, 66.3307, -147.118, 130.112, -138.582, 188.894, -124.72, 240.416, -106.066, 282.7, -83.3355, 314.119, -57.4025, 333.467, -29.2635, 340, -1.83697e-14, 340, 0)
+
+[node name="Clouds" type="ParallaxLayer" parent="Parallax"]
+motion_scale = Vector2(0.5, 0.55)
+
+[node name="Cloud0" type="Node2D" parent="Parallax/Clouds"]
+position = Vector2(250, 170)
+
+[node name="P0" type="Polygon2D" parent="Parallax/Clouds/Cloud0"]
+position = Vector2(-34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(24, 0, 22.1731, 9.1844, 16.9706, 16.9706, 9.1844, 22.1731, 1.46958e-15, 24, -9.1844, 22.1731, -16.9706, 16.9706, -22.1731, 9.1844, -24, 2.93915e-15, -22.1731, -9.1844, -16.9706, -16.9706, -9.1844, -22.1731, -4.40873e-15, -24, 9.1844, -22.1731, 16.9706, -16.9706, 22.1731, -9.1844)
+
+[node name="P1" type="Polygon2D" parent="Parallax/Clouds/Cloud0"]
+position = Vector2(0, -6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, 1.95943e-15, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 3.91887e-15, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641, -5.8783e-15, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459)
+
+[node name="P2" type="Polygon2D" parent="Parallax/Clouds/Cloud0"]
+position = Vector2(34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(26, 0, 24.0209, 9.94977, 18.3848, 18.3848, 9.94977, 24.0209, 1.59204e-15, 26, -9.94977, 24.0209, -18.3848, 18.3848, -24.0209, 9.94977, -26, 3.18408e-15, -24.0209, -9.94977, -18.3848, -18.3848, -9.94977, -24.0209, -4.77612e-15, -26, 9.94977, -24.0209, 18.3848, -18.3848, 24.0209, -9.94977)
+
+[node name="P3" type="Polygon2D" parent="Parallax/Clouds/Cloud0"]
+position = Vector2(6, 10)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(30, 0, 27.7164, 11.4805, 21.2132, 21.2132, 11.4805, 27.7164, 1.83697e-15, 30, -11.4805, 27.7164, -21.2132, 21.2132, -27.7164, 11.4805, -30, 3.67394e-15, -27.7164, -11.4805, -21.2132, -21.2132, -11.4805, -27.7164, -5.51091e-15, -30, 11.4805, -27.7164, 21.2132, -21.2132, 27.7164, -11.4805)
+
+[node name="Cloud1" type="Node2D" parent="Parallax/Clouds"]
+position = Vector2(720, 120)
+
+[node name="P0" type="Polygon2D" parent="Parallax/Clouds/Cloud1"]
+position = Vector2(-34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(24, 0, 22.1731, 9.1844, 16.9706, 16.9706, 9.1844, 22.1731, 1.46958e-15, 24, -9.1844, 22.1731, -16.9706, 16.9706, -22.1731, 9.1844, -24, 2.93915e-15, -22.1731, -9.1844, -16.9706, -16.9706, -9.1844, -22.1731, -4.40873e-15, -24, 9.1844, -22.1731, 16.9706, -16.9706, 22.1731, -9.1844)
+
+[node name="P1" type="Polygon2D" parent="Parallax/Clouds/Cloud1"]
+position = Vector2(0, -6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, 1.95943e-15, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 3.91887e-15, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641, -5.8783e-15, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459)
+
+[node name="P2" type="Polygon2D" parent="Parallax/Clouds/Cloud1"]
+position = Vector2(34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(26, 0, 24.0209, 9.94977, 18.3848, 18.3848, 9.94977, 24.0209, 1.59204e-15, 26, -9.94977, 24.0209, -18.3848, 18.3848, -24.0209, 9.94977, -26, 3.18408e-15, -24.0209, -9.94977, -18.3848, -18.3848, -9.94977, -24.0209, -4.77612e-15, -26, 9.94977, -24.0209, 18.3848, -18.3848, 24.0209, -9.94977)
+
+[node name="P3" type="Polygon2D" parent="Parallax/Clouds/Cloud1"]
+position = Vector2(6, 10)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(30, 0, 27.7164, 11.4805, 21.2132, 21.2132, 11.4805, 27.7164, 1.83697e-15, 30, -11.4805, 27.7164, -21.2132, 21.2132, -27.7164, 11.4805, -30, 3.67394e-15, -27.7164, -11.4805, -21.2132, -21.2132, -11.4805, -27.7164, -5.51091e-15, -30, 11.4805, -27.7164, 21.2132, -21.2132, 27.7164, -11.4805)
+
+[node name="Cloud2" type="Node2D" parent="Parallax/Clouds"]
+position = Vector2(1250, 190)
+
+[node name="P0" type="Polygon2D" parent="Parallax/Clouds/Cloud2"]
+position = Vector2(-34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(24, 0, 22.1731, 9.1844, 16.9706, 16.9706, 9.1844, 22.1731, 1.46958e-15, 24, -9.1844, 22.1731, -16.9706, 16.9706, -22.1731, 9.1844, -24, 2.93915e-15, -22.1731, -9.1844, -16.9706, -16.9706, -9.1844, -22.1731, -4.40873e-15, -24, 9.1844, -22.1731, 16.9706, -16.9706, 22.1731, -9.1844)
+
+[node name="P1" type="Polygon2D" parent="Parallax/Clouds/Cloud2"]
+position = Vector2(0, -6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, 1.95943e-15, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 3.91887e-15, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641, -5.8783e-15, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459)
+
+[node name="P2" type="Polygon2D" parent="Parallax/Clouds/Cloud2"]
+position = Vector2(34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(26, 0, 24.0209, 9.94977, 18.3848, 18.3848, 9.94977, 24.0209, 1.59204e-15, 26, -9.94977, 24.0209, -18.3848, 18.3848, -24.0209, 9.94977, -26, 3.18408e-15, -24.0209, -9.94977, -18.3848, -18.3848, -9.94977, -24.0209, -4.77612e-15, -26, 9.94977, -24.0209, 18.3848, -18.3848, 24.0209, -9.94977)
+
+[node name="P3" type="Polygon2D" parent="Parallax/Clouds/Cloud2"]
+position = Vector2(6, 10)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(30, 0, 27.7164, 11.4805, 21.2132, 21.2132, 11.4805, 27.7164, 1.83697e-15, 30, -11.4805, 27.7164, -21.2132, 21.2132, -27.7164, 11.4805, -30, 3.67394e-15, -27.7164, -11.4805, -21.2132, -21.2132, -11.4805, -27.7164, -5.51091e-15, -30, 11.4805, -27.7164, 21.2132, -21.2132, 27.7164, -11.4805)
+
+[node name="Cloud3" type="Node2D" parent="Parallax/Clouds"]
+position = Vector2(1780, 130)
+
+[node name="P0" type="Polygon2D" parent="Parallax/Clouds/Cloud3"]
+position = Vector2(-34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(24, 0, 22.1731, 9.1844, 16.9706, 16.9706, 9.1844, 22.1731, 1.46958e-15, 24, -9.1844, 22.1731, -16.9706, 16.9706, -22.1731, 9.1844, -24, 2.93915e-15, -22.1731, -9.1844, -16.9706, -16.9706, -9.1844, -22.1731, -4.40873e-15, -24, 9.1844, -22.1731, 16.9706, -16.9706, 22.1731, -9.1844)
+
+[node name="P1" type="Polygon2D" parent="Parallax/Clouds/Cloud3"]
+position = Vector2(0, -6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, 1.95943e-15, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 3.91887e-15, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641, -5.8783e-15, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459)
+
+[node name="P2" type="Polygon2D" parent="Parallax/Clouds/Cloud3"]
+position = Vector2(34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(26, 0, 24.0209, 9.94977, 18.3848, 18.3848, 9.94977, 24.0209, 1.59204e-15, 26, -9.94977, 24.0209, -18.3848, 18.3848, -24.0209, 9.94977, -26, 3.18408e-15, -24.0209, -9.94977, -18.3848, -18.3848, -9.94977, -24.0209, -4.77612e-15, -26, 9.94977, -24.0209, 18.3848, -18.3848, 24.0209, -9.94977)
+
+[node name="P3" type="Polygon2D" parent="Parallax/Clouds/Cloud3"]
+position = Vector2(6, 10)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(30, 0, 27.7164, 11.4805, 21.2132, 21.2132, 11.4805, 27.7164, 1.83697e-15, 30, -11.4805, 27.7164, -21.2132, 21.2132, -27.7164, 11.4805, -30, 3.67394e-15, -27.7164, -11.4805, -21.2132, -21.2132, -11.4805, -27.7164, -5.51091e-15, -30, 11.4805, -27.7164, 21.2132, -21.2132, 27.7164, -11.4805)
+
+[node name="Cloud4" type="Node2D" parent="Parallax/Clouds"]
+position = Vector2(2250, 175)
+
+[node name="P0" type="Polygon2D" parent="Parallax/Clouds/Cloud4"]
+position = Vector2(-34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(24, 0, 22.1731, 9.1844, 16.9706, 16.9706, 9.1844, 22.1731, 1.46958e-15, 24, -9.1844, 22.1731, -16.9706, 16.9706, -22.1731, 9.1844, -24, 2.93915e-15, -22.1731, -9.1844, -16.9706, -16.9706, -9.1844, -22.1731, -4.40873e-15, -24, 9.1844, -22.1731, 16.9706, -16.9706, 22.1731, -9.1844)
+
+[node name="P1" type="Polygon2D" parent="Parallax/Clouds/Cloud4"]
+position = Vector2(0, -6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(32, 0, 29.5641, 12.2459, 22.6274, 22.6274, 12.2459, 29.5641, 1.95943e-15, 32, -12.2459, 29.5641, -22.6274, 22.6274, -29.5641, 12.2459, -32, 3.91887e-15, -29.5641, -12.2459, -22.6274, -22.6274, -12.2459, -29.5641, -5.8783e-15, -32, 12.2459, -29.5641, 22.6274, -22.6274, 29.5641, -12.2459)
+
+[node name="P2" type="Polygon2D" parent="Parallax/Clouds/Cloud4"]
+position = Vector2(34, 6)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(26, 0, 24.0209, 9.94977, 18.3848, 18.3848, 9.94977, 24.0209, 1.59204e-15, 26, -9.94977, 24.0209, -18.3848, 18.3848, -24.0209, 9.94977, -26, 3.18408e-15, -24.0209, -9.94977, -18.3848, -18.3848, -9.94977, -24.0209, -4.77612e-15, -26, 9.94977, -24.0209, 18.3848, -18.3848, 24.0209, -9.94977)
+
+[node name="P3" type="Polygon2D" parent="Parallax/Clouds/Cloud4"]
+position = Vector2(6, 10)
+color = Color(1, 1, 1, 0.92)
+polygon = PackedVector2Array(30, 0, 27.7164, 11.4805, 21.2132, 21.2132, 11.4805, 27.7164, 1.83697e-15, 30, -11.4805, 27.7164, -21.2132, 21.2132, -27.7164, 11.4805, -30, 3.67394e-15, -27.7164, -11.4805, -21.2132, -21.2132, -11.4805, -27.7164, -5.51091e-15, -30, 11.4805, -27.7164, 21.2132, -21.2132, 27.7164, -11.4805)
+
+[node name="NearHills" type="ParallaxLayer" parent="Parallax"]
+motion_scale = Vector2(0.7, 0.75)
+
+[node name="NearHill0" type="Polygon2D" parent="Parallax/NearHills"]
+position = Vector2(400, 690)
+color = Color(0.47, 0.73, 0.42, 1)
+polygon = PackedVector2Array(-230, 0, -230, 0, -225.581, -25.3617, -212.492, -49.7488, -191.238, -72.2241, -162.635, -91.9239, -127.781, -108.091, -88.0172, -120.104, -44.8708, -127.502, -1.40834e-14, -130, 44.8708, -127.502, 88.0172, -120.104, 127.781, -108.091, 162.635, -91.9239, 191.238, -72.2241, 212.492, -49.7488, 225.581, -25.3617, 230, -1.59204e-14, 230, 0)
+
+[node name="NearHill1" type="Polygon2D" parent="Parallax/NearHills"]
+position = Vector2(950, 690)
+color = Color(0.47, 0.73, 0.42, 1)
+polygon = PackedVector2Array(-230, 0, -230, 0, -225.581, -31.2145, -212.492, -61.2293, -191.238, -88.8912, -162.635, -113.137, -127.781, -133.035, -88.0172, -147.821, -44.8708, -156.926, -1.40834e-14, -160, 44.8708, -156.926, 88.0172, -147.821, 127.781, -133.035, 162.635, -113.137, 191.238, -88.8912, 212.492, -61.2293, 225.581, -31.2145, 230, -1.95943e-14, 230, 0)
+
+[node name="NearHill2" type="Polygon2D" parent="Parallax/NearHills"]
+position = Vector2(1500, 690)
+color = Color(0.47, 0.73, 0.42, 1)
+polygon = PackedVector2Array(-230, 0, -230, 0, -225.581, -25.3617, -212.492, -49.7488, -191.238, -72.2241, -162.635, -91.9239, -127.781, -108.091, -88.0172, -120.104, -44.8708, -127.502, -1.40834e-14, -130, 44.8708, -127.502, 88.0172, -120.104, 127.781, -108.091, 162.635, -91.9239, 191.238, -72.2241, 212.492, -49.7488, 225.581, -25.3617, 230, -1.59204e-14, 230, 0)
+
+[node name="NearHill3" type="Polygon2D" parent="Parallax/NearHills"]
+position = Vector2(2050, 690)
+color = Color(0.47, 0.73, 0.42, 1)
+polygon = PackedVector2Array(-230, 0, -230, 0, -225.581, -31.2145, -212.492, -61.2293, -191.238, -88.8912, -162.635, -113.137, -127.781, -133.035, -88.0172, -147.821, -44.8708, -156.926, -1.40834e-14, -160, 44.8708, -156.926, 88.0172, -147.821, 127.781, -133.035, 162.635, -113.137, 191.238, -88.8912, 212.492, -61.2293, 225.581, -31.2145, 230, -1.95943e-14, 230, 0)
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="GroundFloor" type="StaticBody2D" parent="Terrain"]
+position = Vector2(1000, 690)
+
+[node name="Dirt" type="Polygon2D" parent="Terrain/GroundFloor"]
+color = Color(0.56, 0.39, 0.25, 1)
+polygon = PackedVector2Array(-1160, -18, 1160, -18, 1160, 30, -1160, 30)
+
+[node name="DirtShade" type="Polygon2D" parent="Terrain/GroundFloor"]
+color = Color(0.43, 0.29, 0.17, 1)
+polygon = PackedVector2Array(-1160, -18, 1160, -18, 1160, -14, -1160, -14)
+
+[node name="Grass" type="Polygon2D" parent="Terrain/GroundFloor"]
+color = Color(0.44, 0.79, 0.34, 1)
+polygon = PackedVector2Array(-1160, -30, 1160, -30, 1160, -18, -1160, -18)
+
+[node name="Fringe" type="Polygon2D" parent="Terrain/GroundFloor"]
+position = Vector2(-1160, -36)
+color = Color(0.31, 0.62, 0.24, 1)
+polygon = PackedVector2Array(0, 6, 8, 0, 16, 6, 24, 0, 32, 6, 40, 0, 48, 6, 56, 0, 64, 6, 72, 0, 80, 6, 88, 0, 96, 6, 104, 0, 112, 6, 120, 0, 128, 6, 136, 0, 144, 6, 152, 0, 160, 6, 168, 0, 176, 6, 184, 0, 192, 6, 200, 0, 208, 6, 216, 0, 224, 6, 232, 0, 240, 6, 248, 0, 256, 6, 264, 0, 272, 6, 280, 0, 288, 6, 296, 0, 304, 6, 312, 0, 320, 6, 328, 0, 336, 6, 344, 0, 352, 6, 360, 0, 368, 6, 376, 0, 384, 6, 392, 0, 400, 6, 408, 0, 416, 6, 424, 0, 432, 6, 440, 0, 448, 6, 456, 0, 464, 6, 472, 0, 480, 6, 488, 0, 496, 6, 504, 0, 512, 6, 520, 0, 528, 6, 536, 0, 544, 6, 552, 0, 560, 6, 568, 0, 576, 6, 584, 0, 592, 6, 600, 0, 608, 6, 616, 0, 624, 6, 632, 0, 640, 6, 648, 0, 656, 6, 664, 0, 672, 6, 680, 0, 688, 6, 696, 0, 704, 6, 712, 0, 720, 6, 728, 0, 736, 6, 744, 0, 752, 6, 760, 0, 768, 6, 776, 0, 784, 6, 792, 0, 800, 6, 808, 0, 816, 6, 824, 0, 832, 6, 840, 0, 848, 6, 856, 0, 864, 6, 872, 0, 880, 6, 888, 0, 896, 6, 904, 0, 912, 6, 920, 0, 928, 6, 936, 0, 944, 6, 952, 0, 960, 6, 968, 0, 976, 6, 984, 0, 992, 6, 1000, 0, 1008, 6, 1016, 0, 1024, 6, 1032, 0, 1040, 6, 1048, 0, 1056, 6, 1064, 0, 1072, 6, 1080, 0, 1088, 6, 1096, 0, 1104, 6, 1112, 0, 1120, 6, 1128, 0, 1136, 6, 1144, 0, 1152, 6, 1160, 0, 1168, 6, 1176, 0, 1184, 6, 1192, 0, 1200, 6, 1208, 0, 1216, 6, 1224, 0, 1232, 6, 1240, 0, 1248, 6, 1256, 0, 1264, 6, 1272, 0, 1280, 6, 1288, 0, 1296, 6, 1304, 0, 1312, 6, 1320, 0, 1328, 6, 1336, 0, 1344, 6, 1352, 0, 1360, 6, 1368, 0, 1376, 6, 1384, 0, 1392, 6, 1400, 0, 1408, 6, 1416, 0, 1424, 6, 1432, 0, 1440, 6, 1448, 0, 1456, 6, 1464, 0, 1472, 6, 1480, 0, 1488, 6, 1496, 0, 1504, 6, 1512, 0, 1520, 6, 1528, 0, 1536, 6, 1544, 0, 1552, 6, 1560, 0, 1568, 6, 1576, 0, 1584, 6, 1592, 0, 1600, 6, 1608, 0, 1616, 6, 1624, 0, 1632, 6, 1640, 0, 1648, 6, 1656, 0, 1664, 6, 1672, 0, 1680, 6, 1688, 0, 1696, 6, 1704, 0, 1712, 6, 1720, 0, 1728, 6, 1736, 0, 1744, 6, 1752, 0, 1760, 6, 1768, 0, 1776, 6, 1784, 0, 1792, 6, 1800, 0, 1808, 6, 1816, 0, 1824, 6, 1832, 0, 1840, 6, 1848, 0, 1856, 6, 1864, 0, 1872, 6, 1880, 0, 1888, 6, 1896, 0, 1904, 6, 1912, 0, 1920, 6, 1928, 0, 1936, 6, 1944, 0, 1952, 6, 1960, 0, 1968, 6, 1976, 0, 1984, 6, 1992, 0, 2000, 6, 2008, 0, 2016, 6, 2024, 0, 2032, 6, 2040, 0, 2048, 6, 2056, 0, 2064, 6, 2072, 0, 2080, 6, 2088, 0, 2096, 6, 2104, 0, 2112, 6, 2120, 0, 2128, 6, 2136, 0, 2144, 6, 2152, 0, 2160, 6, 2168, 0, 2176, 6, 2184, 0, 2192, 6, 2200, 0, 2208, 6, 2216, 0, 2224, 6, 2232, 0, 2240, 6, 2248, 0, 2256, 6, 2264, 0, 2272, 6, 2280, 0, 2288, 6, 2296, 0, 2304, 6, 2312, 0, 2320, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/GroundFloor"]
+shape = SubResource("shape_0")
+
+[node name="LeftWall" type="StaticBody2D" parent="Terrain"]
+position = Vector2(-110, 390)
+
+[node name="Body" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.53, 0.51, 0.6, 1)
+polygon = PackedVector2Array(-50, -270, 50, -270, 50, 270, -50, 270)
+
+[node name="Edge" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -270, 50, -270, 50, -264, -50, -264)
+
+[node name="Seam1" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -217, 50, -217, 50, -215, -50, -215)
+
+[node name="Seam2" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -163, 50, -163, 50, -161, -50, -161)
+
+[node name="Seam3" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -109, 50, -109, 50, -107, -50, -107)
+
+[node name="Seam4" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -55, 50, -55, 50, -53, -50, -53)
+
+[node name="Seam5" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -1, 50, -1, 50, 1, -50, 1)
+
+[node name="Seam6" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 53, 50, 53, 50, 55, -50, 55)
+
+[node name="Seam7" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 107, 50, 107, 50, 109, -50, 109)
+
+[node name="Seam8" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 161, 50, 161, 50, 163, -50, 163)
+
+[node name="Seam9" type="Polygon2D" parent="Terrain/LeftWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 215, 50, 215, 50, 217, -50, 217)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/LeftWall"]
+shape = SubResource("shape_1")
+
+[node name="RightWall" type="StaticBody2D" parent="Terrain"]
+position = Vector2(2110, 390)
+
+[node name="Body" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.53, 0.51, 0.6, 1)
+polygon = PackedVector2Array(-50, -270, 50, -270, 50, 270, -50, 270)
+
+[node name="Edge" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -270, 50, -270, 50, -264, -50, -264)
+
+[node name="Seam1" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -217, 50, -217, 50, -215, -50, -215)
+
+[node name="Seam2" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -163, 50, -163, 50, -161, -50, -161)
+
+[node name="Seam3" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -109, 50, -109, 50, -107, -50, -107)
+
+[node name="Seam4" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -55, 50, -55, 50, -53, -50, -53)
+
+[node name="Seam5" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, -1, 50, -1, 50, 1, -50, 1)
+
+[node name="Seam6" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 53, 50, 53, 50, 55, -50, 55)
+
+[node name="Seam7" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 107, 50, 107, 50, 109, -50, 109)
+
+[node name="Seam8" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 161, 50, 161, 50, 163, -50, 163)
+
+[node name="Seam9" type="Polygon2D" parent="Terrain/RightWall"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-50, 215, 50, 215, 50, 217, -50, 217)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/RightWall"]
+shape = SubResource("shape_2")
+
+[node name="Ceiling" type="StaticBody2D" parent="Terrain"]
+position = Vector2(1000, 90)
+
+[node name="Body" type="Polygon2D" parent="Terrain/Ceiling"]
+color = Color(0.53, 0.51, 0.6, 1)
+polygon = PackedVector2Array(-1160, -30, 1160, -30, 1160, 30, -1160, 30)
+
+[node name="Edge" type="Polygon2D" parent="Terrain/Ceiling"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-1160, -30, 1160, -30, 1160, -24, -1160, -24)
+
+[node name="Seam1" type="Polygon2D" parent="Terrain/Ceiling"]
+color = Color(0.38, 0.36, 0.46, 1)
+polygon = PackedVector2Array(-1160, -1, 1160, -1, 1160, 1, -1160, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/Ceiling"]
+shape = SubResource("shape_3")
+
+[node name="GroundStart" type="StaticBody2D" parent="Terrain"]
+position = Vector2(150, 580)
+
+[node name="Dirt" type="Polygon2D" parent="Terrain/GroundStart"]
+color = Color(0.56, 0.39, 0.25, 1)
+polygon = PackedVector2Array(-210, -68, 210, -68, 210, 80, -210, 80)
+
+[node name="DirtShade" type="Polygon2D" parent="Terrain/GroundStart"]
+color = Color(0.43, 0.29, 0.17, 1)
+polygon = PackedVector2Array(-210, -68, 210, -68, 210, -64, -210, -64)
+
+[node name="Grass" type="Polygon2D" parent="Terrain/GroundStart"]
+color = Color(0.44, 0.79, 0.34, 1)
+polygon = PackedVector2Array(-210, -80, 210, -80, 210, -68, -210, -68)
+
+[node name="Fringe" type="Polygon2D" parent="Terrain/GroundStart"]
+position = Vector2(-210, -86)
+color = Color(0.31, 0.62, 0.24, 1)
+polygon = PackedVector2Array(0, 6, 8.07692, 0, 16.1538, 6, 24.2308, 0, 32.3077, 6, 40.3846, 0, 48.4615, 6, 56.5385, 0, 64.6154, 6, 72.6923, 0, 80.7692, 6, 88.8462, 0, 96.9231, 6, 105, 0, 113.077, 6, 121.154, 0, 129.231, 6, 137.308, 0, 145.385, 6, 153.462, 0, 161.538, 6, 169.615, 0, 177.692, 6, 185.769, 0, 193.846, 6, 201.923, 0, 210, 6, 218.077, 0, 226.154, 6, 234.231, 0, 242.308, 6, 250.385, 0, 258.462, 6, 266.538, 0, 274.615, 6, 282.692, 0, 290.769, 6, 298.846, 0, 306.923, 6, 315, 0, 323.077, 6, 331.154, 0, 339.231, 6, 347.308, 0, 355.385, 6, 363.462, 0, 371.538, 6, 379.615, 0, 387.692, 6, 395.769, 0, 403.846, 6, 411.923, 0, 420, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/GroundStart"]
+shape = SubResource("shape_4")
+
+[node name="GoalGround" type="StaticBody2D" parent="Terrain"]
+position = Vector2(1850, 580)
+
+[node name="Dirt" type="Polygon2D" parent="Terrain/GoalGround"]
+color = Color(0.56, 0.39, 0.25, 1)
+polygon = PackedVector2Array(-210, -68, 210, -68, 210, 80, -210, 80)
+
+[node name="DirtShade" type="Polygon2D" parent="Terrain/GoalGround"]
+color = Color(0.43, 0.29, 0.17, 1)
+polygon = PackedVector2Array(-210, -68, 210, -68, 210, -64, -210, -64)
+
+[node name="Grass" type="Polygon2D" parent="Terrain/GoalGround"]
+color = Color(0.44, 0.79, 0.34, 1)
+polygon = PackedVector2Array(-210, -80, 210, -80, 210, -68, -210, -68)
+
+[node name="Fringe" type="Polygon2D" parent="Terrain/GoalGround"]
+position = Vector2(-210, -86)
+color = Color(0.31, 0.62, 0.24, 1)
+polygon = PackedVector2Array(0, 6, 8.07692, 0, 16.1538, 6, 24.2308, 0, 32.3077, 6, 40.3846, 0, 48.4615, 6, 56.5385, 0, 64.6154, 6, 72.6923, 0, 80.7692, 6, 88.8462, 0, 96.9231, 6, 105, 0, 113.077, 6, 121.154, 0, 129.231, 6, 137.308, 0, 145.385, 6, 153.462, 0, 161.538, 6, 169.615, 0, 177.692, 6, 185.769, 0, 193.846, 6, 201.923, 0, 210, 6, 218.077, 0, 226.154, 6, 234.231, 0, 242.308, 6, 250.385, 0, 258.462, 6, 266.538, 0, 274.615, 6, 282.692, 0, 290.769, 6, 298.846, 0, 306.923, 6, 315, 0, 323.077, 6, 331.154, 0, 339.231, 6, 347.308, 0, 355.385, 6, 363.462, 0, 371.538, 6, 379.615, 0, 387.692, 6, 395.769, 0, 403.846, 6, 411.923, 0, 420, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/GoalGround"]
+shape = SubResource("shape_5")
+
+[node name="PlatformA" type="StaticBody2D" parent="Terrain"]
+position = Vector2(560, 520)
+
+[node name="Dirt" type="Polygon2D" parent="Terrain/PlatformA"]
+color = Color(0.56, 0.39, 0.25, 1)
+polygon = PackedVector2Array(-70, -8, 70, -8, 50.4, 20, -50.4, 20)
+
+[node name="DirtShade" type="Polygon2D" parent="Terrain/PlatformA"]
+color = Color(0.43, 0.29, 0.17, 1)
+polygon = PackedVector2Array(-70, -8, 70, -8, 70, -4, -70, -4)
+
+[node name="Grass" type="Polygon2D" parent="Terrain/PlatformA"]
+color = Color(0.44, 0.79, 0.34, 1)
+polygon = PackedVector2Array(-70, -20, 70, -20, 70, -8, -70, -8)
+
+[node name="Fringe" type="Polygon2D" parent="Terrain/PlatformA"]
+position = Vector2(-70, -26)
+color = Color(0.31, 0.62, 0.24, 1)
+polygon = PackedVector2Array(0, 6, 7.77778, 0, 15.5556, 6, 23.3333, 0, 31.1111, 6, 38.8889, 0, 46.6667, 6, 54.4444, 0, 62.2222, 6, 70, 0, 77.7778, 6, 85.5556, 0, 93.3333, 6, 101.111, 0, 108.889, 6, 116.667, 0, 124.444, 6, 132.222, 0, 140, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PlatformA"]
+shape = SubResource("shape_6")
+
+[node name="PlatformB" type="StaticBody2D" parent="Terrain"]
+position = Vector2(850, 460)
+
+[node name="Dirt" type="Polygon2D" parent="Terrain/PlatformB"]
+color = Color(0.56, 0.39, 0.25, 1)
+polygon = PackedVector2Array(-80, -8, 80, -8, 57.6, 20, -57.6, 20)
+
+[node name="DirtShade" type="Polygon2D" parent="Terrain/PlatformB"]
+color = Color(0.43, 0.29, 0.17, 1)
+polygon = PackedVector2Array(-80, -8, 80, -8, 80, -4, -80, -4)
+
+[node name="Grass" type="Polygon2D" parent="Terrain/PlatformB"]
+color = Color(0.44, 0.79, 0.34, 1)
+polygon = PackedVector2Array(-80, -20, 80, -20, 80, -8, -80, -8)
+
+[node name="Fringe" type="Polygon2D" parent="Terrain/PlatformB"]
+position = Vector2(-80, -26)
+color = Color(0.31, 0.62, 0.24, 1)
+polygon = PackedVector2Array(0, 6, 8, 0, 16, 6, 24, 0, 32, 6, 40, 0, 48, 6, 56, 0, 64, 6, 72, 0, 80, 6, 88, 0, 96, 6, 104, 0, 112, 6, 120, 0, 128, 6, 136, 0, 144, 6, 152, 0, 160, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PlatformB"]
+shape = SubResource("shape_7")
+
+[node name="PlatformC" type="StaticBody2D" parent="Terrain"]
+position = Vector2(1140, 410)
+
+[node name="Dirt" type="Polygon2D" parent="Terrain/PlatformC"]
+color = Color(0.56, 0.39, 0.25, 1)
+polygon = PackedVector2Array(-80, -8, 80, -8, 57.6, 20, -57.6, 20)
+
+[node name="DirtShade" type="Polygon2D" parent="Terrain/PlatformC"]
+color = Color(0.43, 0.29, 0.17, 1)
+polygon = PackedVector2Array(-80, -8, 80, -8, 80, -4, -80, -4)
+
+[node name="Grass" type="Polygon2D" parent="Terrain/PlatformC"]
+color = Color(0.44, 0.79, 0.34, 1)
+polygon = PackedVector2Array(-80, -20, 80, -20, 80, -8, -80, -8)
+
+[node name="Fringe" type="Polygon2D" parent="Terrain/PlatformC"]
+position = Vector2(-80, -26)
+color = Color(0.31, 0.62, 0.24, 1)
+polygon = PackedVector2Array(0, 6, 8, 0, 16, 6, 24, 0, 32, 6, 40, 0, 48, 6, 56, 0, 64, 6, 72, 0, 80, 6, 88, 0, 96, 6, 104, 0, 112, 6, 120, 0, 128, 6, 136, 0, 144, 6, 152, 0, 160, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PlatformC"]
+shape = SubResource("shape_8")
+
+[node name="PlatformD" type="StaticBody2D" parent="Terrain"]
+position = Vector2(1440, 470)
+
+[node name="Dirt" type="Polygon2D" parent="Terrain/PlatformD"]
+color = Color(0.56, 0.39, 0.25, 1)
+polygon = PackedVector2Array(-80, -8, 80, -8, 57.6, 20, -57.6, 20)
+
+[node name="DirtShade" type="Polygon2D" parent="Terrain/PlatformD"]
+color = Color(0.43, 0.29, 0.17, 1)
+polygon = PackedVector2Array(-80, -8, 80, -8, 80, -4, -80, -4)
+
+[node name="Grass" type="Polygon2D" parent="Terrain/PlatformD"]
+color = Color(0.44, 0.79, 0.34, 1)
+polygon = PackedVector2Array(-80, -20, 80, -20, 80, -8, -80, -8)
+
+[node name="Fringe" type="Polygon2D" parent="Terrain/PlatformD"]
+position = Vector2(-80, -26)
+color = Color(0.31, 0.62, 0.24, 1)
+polygon = PackedVector2Array(0, 6, 8, 0, 16, 6, 24, 0, 32, 6, 40, 0, 48, 6, 56, 0, 64, 6, 72, 0, 80, 6, 88, 0, 96, 6, 104, 0, 112, 6, 120, 0, 128, 6, 136, 0, 144, 6, 152, 0, 160, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain/PlatformD"]
+shape = SubResource("shape_9")
+
+[node name="Spikes" type="Area2D" parent="."]
+
+[node name="Col0" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(425, 640)
+shape = SubResource("shape_10")
+
+[node name="Base0" type="Polygon2D" parent="Spikes"]
+position = Vector2(425, 640)
+color = Color(0.34, 0.35, 0.42, 1)
+polygon = PackedVector2Array(-68, 10, 68, 10, 68, 20, -68, 20)
+
+[node name="TeethBack0" type="Polygon2D" parent="Spikes"]
+position = Vector2(360, 618)
+color = Color(0.52, 0.54, 0.62, 1)
+polygon = PackedVector2Array(0, 40, 10.8333, 0, 21.6667, 40, 32.5, 0, 43.3333, 40, 54.1667, 0, 65, 40, 75.8333, 0, 86.6667, 40, 97.5, 0, 108.333, 40, 119.167, 0, 130, 40)
+
+[node name="Teeth0" type="Polygon2D" parent="Spikes"]
+position = Vector2(360, 620)
+color = Color(0.8, 0.82, 0.88, 1)
+polygon = PackedVector2Array(0, 40, 10.8333, 0, 21.6667, 40, 32.5, 0, 43.3333, 40, 54.1667, 0, 65, 40, 75.8333, 0, 86.6667, 40, 97.5, 0, 108.333, 40, 119.167, 0, 130, 40)
+
+[node name="Col1" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(700, 640)
+shape = SubResource("shape_11")
+
+[node name="Base1" type="Polygon2D" parent="Spikes"]
+position = Vector2(700, 640)
+color = Color(0.34, 0.35, 0.42, 1)
+polygon = PackedVector2Array(-73, 10, 73, 10, 73, 20, -73, 20)
+
+[node name="TeethBack1" type="Polygon2D" parent="Spikes"]
+position = Vector2(630, 618)
+color = Color(0.52, 0.54, 0.62, 1)
+polygon = PackedVector2Array(0, 40, 10, 0, 20, 40, 30, 0, 40, 40, 50, 0, 60, 40, 70, 0, 80, 40, 90, 0, 100, 40, 110, 0, 120, 40, 130, 0, 140, 40)
+
+[node name="Teeth1" type="Polygon2D" parent="Spikes"]
+position = Vector2(630, 620)
+color = Color(0.8, 0.82, 0.88, 1)
+polygon = PackedVector2Array(0, 40, 10, 0, 20, 40, 30, 0, 40, 40, 50, 0, 60, 40, 70, 0, 80, 40, 90, 0, 100, 40, 110, 0, 120, 40, 130, 0, 140, 40)
+
+[node name="Col2" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(995, 640)
+shape = SubResource("shape_12")
+
+[node name="Base2" type="Polygon2D" parent="Spikes"]
+position = Vector2(995, 640)
+color = Color(0.34, 0.35, 0.42, 1)
+polygon = PackedVector2Array(-68, 10, 68, 10, 68, 20, -68, 20)
+
+[node name="TeethBack2" type="Polygon2D" parent="Spikes"]
+position = Vector2(930, 618)
+color = Color(0.52, 0.54, 0.62, 1)
+polygon = PackedVector2Array(0, 40, 10.8333, 0, 21.6667, 40, 32.5, 0, 43.3333, 40, 54.1667, 0, 65, 40, 75.8333, 0, 86.6667, 40, 97.5, 0, 108.333, 40, 119.167, 0, 130, 40)
+
+[node name="Teeth2" type="Polygon2D" parent="Spikes"]
+position = Vector2(930, 620)
+color = Color(0.8, 0.82, 0.88, 1)
+polygon = PackedVector2Array(0, 40, 10.8333, 0, 21.6667, 40, 32.5, 0, 43.3333, 40, 54.1667, 0, 65, 40, 75.8333, 0, 86.6667, 40, 97.5, 0, 108.333, 40, 119.167, 0, 130, 40)
+
+[node name="Col3" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(1290, 640)
+shape = SubResource("shape_13")
+
+[node name="Base3" type="Polygon2D" parent="Spikes"]
+position = Vector2(1290, 640)
+color = Color(0.34, 0.35, 0.42, 1)
+polygon = PackedVector2Array(-73, 10, 73, 10, 73, 20, -73, 20)
+
+[node name="TeethBack3" type="Polygon2D" parent="Spikes"]
+position = Vector2(1220, 618)
+color = Color(0.52, 0.54, 0.62, 1)
+polygon = PackedVector2Array(0, 40, 10, 0, 20, 40, 30, 0, 40, 40, 50, 0, 60, 40, 70, 0, 80, 40, 90, 0, 100, 40, 110, 0, 120, 40, 130, 0, 140, 40)
+
+[node name="Teeth3" type="Polygon2D" parent="Spikes"]
+position = Vector2(1220, 620)
+color = Color(0.8, 0.82, 0.88, 1)
+polygon = PackedVector2Array(0, 40, 10, 0, 20, 40, 30, 0, 40, 40, 50, 0, 60, 40, 70, 0, 80, 40, 90, 0, 100, 40, 110, 0, 120, 40, 130, 0, 140, 40)
+
+[node name="Col4" type="CollisionShape2D" parent="Spikes"]
+position = Vector2(1580, 640)
+shape = SubResource("shape_14")
+
+[node name="Base4" type="Polygon2D" parent="Spikes"]
+position = Vector2(1580, 640)
+color = Color(0.34, 0.35, 0.42, 1)
+polygon = PackedVector2Array(-63, 10, 63, 10, 63, 20, -63, 20)
+
+[node name="TeethBack4" type="Polygon2D" parent="Spikes"]
+position = Vector2(1520, 618)
+color = Color(0.52, 0.54, 0.62, 1)
+polygon = PackedVector2Array(0, 40, 10, 0, 20, 40, 30, 0, 40, 40, 50, 0, 60, 40, 70, 0, 80, 40, 90, 0, 100, 40, 110, 0, 120, 40)
+
+[node name="Teeth4" type="Polygon2D" parent="Spikes"]
+position = Vector2(1520, 620)
+color = Color(0.8, 0.82, 0.88, 1)
+polygon = PackedVector2Array(0, 40, 10, 0, 20, 40, 30, 0, 40, 40, 50, 0, 60, 40, 70, 0, 80, 40, 90, 0, 100, 40, 110, 0, 120, 40)
+
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(1980, 452)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+shape = SubResource("shape_15")
+
+[node name="Base" type="Polygon2D" parent="Goal"]
+color = Color(0.62, 0.55, 0.42, 1)
+polygon = PackedVector2Array(-28, 33, -27.7553, 31.4549, -27.0451, 30.0611, -25.9389, 28.9549, -24.5451, 28.2447, -23, 28, 23, 28, 24.5451, 28.2447, 25.9389, 28.9549, 27.0451, 30.0611, 27.7553, 31.4549, 28, 33, 28, 43, 27.7553, 44.5451, 27.0451, 45.9389, 25.9389, 47.0451, 24.5451, 47.7553, 23, 48, -23, 48, -24.5451, 47.7553, -25.9389, 47.0451, -27.0451, 45.9389, -27.7553, 44.5451, -28, 43)
+
+[node name="PoleOutline" type="Polygon2D" parent="Goal"]
+color = Color(0.6, 0.62, 0.68, 1)
+polygon = PackedVector2Array(-5, -52, 5, -52, 5, 48, -5, 48)
+
+[node name="Pole" type="Polygon2D" parent="Goal"]
+color = Color(0.86, 0.87, 0.91, 1)
+polygon = PackedVector2Array(-3, -52, 3, -52, 3, 48, -3, 48)
+
+[node name="Knob" type="Polygon2D" parent="Goal"]
+color = Color(0.96, 0.8, 0.3, 1)
+polygon = PackedVector2Array(8, -52, 7.39104, -48.9385, 5.65685, -46.3431, 3.06147, -44.609, 4.89859e-16, -44, -3.06147, -44.609, -5.65685, -46.3431, -7.39104, -48.9385, -8, -52, -7.39104, -55.0615, -5.65685, -57.6569, -3.06147, -59.391, -1.46958e-15, -60, 3.06147, -59.391, 5.65685, -57.6569, 7.39104, -55.0615)
+
+[node name="FlagShadow" type="Polygon2D" parent="Goal"]
+color = Color(0.7, 0.16, 0.26, 1)
+polygon = PackedVector2Array(3, -46, 49, -30, 3, -14)
+
+[node name="Flag" type="Polygon2D" parent="Goal"]
+color = Color(0.9, 0.24, 0.34, 1)
+polygon = PackedVector2Array(3, -50, 47, -34, 3, -18)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(100, 460)
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Bush0" type="Node2D" parent="Foreground"]
+position = Vector2(35, 496)
+scale = Vector2(0.85, 0.85)
+
+[node name="D0" type="Polygon2D" parent="Foreground/Bush0"]
+position = Vector2(-26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="D1" type="Polygon2D" parent="Foreground/Bush0"]
+position = Vector2(0, -3)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="D2" type="Polygon2D" parent="Foreground/Bush0"]
+position = Vector2(26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="L0" type="Polygon2D" parent="Foreground/Bush0"]
+position = Vector2(-26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="L1" type="Polygon2D" parent="Foreground/Bush0"]
+position = Vector2(0, -8)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="L2" type="Polygon2D" parent="Foreground/Bush0"]
+position = Vector2(26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="Bush1" type="Node2D" parent="Foreground"]
+position = Vector2(300, 496)
+scale = Vector2(1.05, 1.05)
+
+[node name="D0" type="Polygon2D" parent="Foreground/Bush1"]
+position = Vector2(-26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="D1" type="Polygon2D" parent="Foreground/Bush1"]
+position = Vector2(0, -3)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="D2" type="Polygon2D" parent="Foreground/Bush1"]
+position = Vector2(26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="L0" type="Polygon2D" parent="Foreground/Bush1"]
+position = Vector2(-26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="L1" type="Polygon2D" parent="Foreground/Bush1"]
+position = Vector2(0, -8)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="L2" type="Polygon2D" parent="Foreground/Bush1"]
+position = Vector2(26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="Bush2" type="Node2D" parent="Foreground"]
+position = Vector2(1690, 496)
+scale = Vector2(1, 1)
+
+[node name="D0" type="Polygon2D" parent="Foreground/Bush2"]
+position = Vector2(-26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="D1" type="Polygon2D" parent="Foreground/Bush2"]
+position = Vector2(0, -3)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="D2" type="Polygon2D" parent="Foreground/Bush2"]
+position = Vector2(26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="L0" type="Polygon2D" parent="Foreground/Bush2"]
+position = Vector2(-26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="L1" type="Polygon2D" parent="Foreground/Bush2"]
+position = Vector2(0, -8)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="L2" type="Polygon2D" parent="Foreground/Bush2"]
+position = Vector2(26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="Bush3" type="Node2D" parent="Foreground"]
+position = Vector2(1770, 496)
+scale = Vector2(0.85, 0.85)
+
+[node name="D0" type="Polygon2D" parent="Foreground/Bush3"]
+position = Vector2(-26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="D1" type="Polygon2D" parent="Foreground/Bush3"]
+position = Vector2(0, -3)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="D2" type="Polygon2D" parent="Foreground/Bush3"]
+position = Vector2(26, 7)
+color = Color(0.28, 0.55, 0.24, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="L0" type="Polygon2D" parent="Foreground/Bush3"]
+position = Vector2(-26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(20, 0, 18.4776, 6.12293, 14.1421, 11.3137, 7.65367, 14.7821, 1.22465e-15, 16, -7.65367, 14.7821, -14.1421, 11.3137, -18.4776, 6.12293, -20, 1.95943e-15, -18.4776, -6.12293, -14.1421, -11.3137, -7.65367, -14.7821, -3.67394e-15, -16, 7.65367, -14.7821, 14.1421, -11.3137, 18.4776, -6.12293)
+
+[node name="L1" type="Polygon2D" parent="Foreground/Bush3"]
+position = Vector2(0, -8)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(26, 0, 24.0209, 7.95982, 18.3848, 14.7078, 9.94977, 19.2167, 1.59204e-15, 20.8, -9.94977, 19.2167, -18.3848, 14.7078, -24.0209, 7.95982, -26, 2.54727e-15, -24.0209, -7.95982, -18.3848, -14.7078, -9.94977, -19.2167, -4.77612e-15, -20.8, 9.94977, -19.2167, 18.3848, -14.7078, 24.0209, -7.95982)
+
+[node name="L2" type="Polygon2D" parent="Foreground/Bush3"]
+position = Vector2(26, 2)
+color = Color(0.36, 0.67, 0.3, 1)
+polygon = PackedVector2Array(22, 0, 20.3253, 6.73523, 15.5563, 12.4451, 8.41904, 16.2603, 1.34711e-15, 17.6, -8.41904, 16.2603, -15.5563, 12.4451, -20.3253, 6.73523, -22, 2.15538e-15, -20.3253, -6.73523, -15.5563, -12.4451, -8.41904, -16.2603, -4.04133e-15, -17.6, 8.41904, -16.2603, 15.5563, -12.4451, 20.3253, -6.73523)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Hint" type="Label" parent="UI"]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 560.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("ui_hint_box")
+text = "Move: A / D  or  Arrows      Jump: Space / W / Up      Reach the flag!"
+
+[node name="WinLabel" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.12, 0.09, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("ui_win_box")
+text = "LEVEL COMPLETE!"
+horizontal_alignment = 1
+vertical_alignment = 1
